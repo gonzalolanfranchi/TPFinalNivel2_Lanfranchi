@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 
-namespace services
+namespace service
 {
     public class DataAccess
     {
@@ -24,13 +24,13 @@ namespace services
             command = new SqlCommand();
         }
 
-        public void SetQuery(string query)
+        public void setQuery(string query)
         {
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = query;
         }
 
-        public void ExecuteRead()
+        public void executeRead()
         {
             command.Connection = connection;
             try
@@ -44,12 +44,13 @@ namespace services
             }
         }
 
-        public void ExecuteAction()
+        public void executeAction()
         {
             command.Connection = connection;
             try
             {
-
+                connection.Open();
+                command.ExecuteNonQuery();
             }
             catch (Exception)
             {
@@ -57,5 +58,16 @@ namespace services
             }
         }
 
+        public void setParameter(string name, object value)
+        {
+            command.Parameters.AddWithValue(name, value);
+        }
+
+        public void closeConnection()
+        {
+            if (reader != null)
+                reader.Close();
+            connection.Close();
+        }
     }
 }
