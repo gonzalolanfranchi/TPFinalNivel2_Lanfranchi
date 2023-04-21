@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using domain;
+using service;
 
 namespace presentacion
 {
@@ -21,7 +22,29 @@ namespace presentacion
 
         private void frmArticulos_Load(object sender, EventArgs e)
         {
-            cargar();
+            load();
+            
+        }
+
+        private void load()
+        {
+            ProductoService service = new ProductoService();
+            try
+            {
+                listaProducto = service.toList();
+                dgvArticulos.DataSource = listaProducto;
+                hideColumns();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private void hideColumns()
+        {
+            dgvArticulos.Columns["Id"].Visible = false;
+            dgvArticulos.Columns["ImagenUrl"].Visible = false;
+
         }
     }
 }
