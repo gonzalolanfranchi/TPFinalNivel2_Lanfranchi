@@ -78,6 +78,7 @@ namespace presentacion
                 producto.Marca = (Marca)cboMarca.SelectedItem;
                 producto.Categoria = (Categoria)cboCategoria.SelectedItem;
                 producto.ImagenUrl = txtImagenUrl.Text;
+                loadImage(producto.ImagenUrl);
                 producto.Precio = decimal.Parse(txtPrecio.Text);
 
                 if (archivo != null && !(txtImagenUrl.Text.ToUpper().Contains("HTTP")))
@@ -100,6 +101,30 @@ namespace presentacion
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            archivo = new OpenFileDialog();
+            archivo.Filter = "jpg|*.jpg;|png|*.png";
+            if (archivo.ShowDialog() == DialogResult.OK)
+            {
+                txtImagenUrl.Text = archivo.FileName;
+                loadImage(archivo.FileName);
+            }
+        }
+
+        private void loadImage(string imagen)
+        {
+            try
+            {
+                pbxImagen.Load(imagen);
+            }
+            catch (Exception)
+            {
+                string sinimagen = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName + ConfigurationManager.AppSettings["images"] + "\\notfound.png";
+                pbxImagen.Load(sinimagen);
             }
         }
     }
