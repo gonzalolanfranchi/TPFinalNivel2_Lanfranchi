@@ -24,8 +24,7 @@ namespace presentacion
 
         private void frmArticulos_Load(object sender, EventArgs e)
         {
-            load();
-            
+            load();           
         }
 
         private void load()
@@ -50,7 +49,7 @@ namespace presentacion
             {
                 pbxImagen.Load(imagen);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 string sinimagen = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName + ConfigurationManager.AppSettings["images"] + "\\notfound.png";
                 pbxImagen.Load(sinimagen);
@@ -61,7 +60,6 @@ namespace presentacion
         {
             dgvArticulos.Columns["Id"].Visible = false;
             dgvArticulos.Columns["ImagenUrl"].Visible = false;
-
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
@@ -71,6 +69,38 @@ namespace presentacion
                 Producto seleccionado = (Producto)dgvArticulos.CurrentRow.DataBoundItem;
                 loadImage(seleccionado.ImagenUrl);
             }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            eliminar();
+        }
+
+        private void eliminar()
+        {
+            ProductoService service = new ProductoService();
+            Producto seleccionado;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("Esta seguro que desea eliminar el producto?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Producto)dgvArticulos.CurrentRow.DataBoundItem;
+                    service.eliminar(seleccionado.Id);
+                    load();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAgregar alta = new frmAgregar();
+            alta.ShowDialog();
+            load();
         }
     }
 }

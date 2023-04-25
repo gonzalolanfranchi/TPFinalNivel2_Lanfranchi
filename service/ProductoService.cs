@@ -49,9 +49,21 @@ namespace service
             {
                 data.closeConnection();
             }
+        }
 
-
-
+        public void eliminar(int id)
+        {
+            try
+            {
+                DataAccess datos = new DataAccess();
+                datos.setQuery("delete From ARTICULOS where id = @id");
+                datos.setParameter("id", id);
+                datos.executeAction();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
