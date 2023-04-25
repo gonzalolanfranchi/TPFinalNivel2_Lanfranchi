@@ -102,5 +102,14 @@ namespace presentacion
             alta.ShowDialog();
             load();
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Producto seleccionado;
+            seleccionado = (Producto)dgvArticulos.CurrentRow.DataBoundItem;
+            frmAgregar modificar = new frmAgregar(seleccionado);
+            modificar.ShowDialog();
+            load();
+        }
     }
 }

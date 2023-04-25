@@ -65,5 +65,56 @@ namespace service
                 throw ex;
             }
         }
+
+        public void agregar(Producto nuevo)
+        {
+            DataAccess datos = new DataAccess();
+            try
+            {
+                datos.setQuery("insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio) values (@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @imagenUrl, @precio)");
+                datos.setParameter("@codigo", nuevo.Codigo);
+                datos.setParameter("@nombre", nuevo.Nombre);
+                datos.setParameter("@descripcion", nuevo.Descripcion);
+                datos.setParameter("@idMarca", nuevo.Marca.Id);
+                datos.setParameter("@idCategoria", nuevo.Categoria.Id);
+                datos.setParameter("@imagenUrl", nuevo.ImagenUrl);
+                datos.setParameter("@precio", nuevo.Precio);
+                datos.executeAction();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.closeConnection();
+            }
+        }
+
+        public void modificar(Producto prod)
+        {
+            DataAccess datos = new DataAccess();
+            try
+            {
+                datos.setQuery("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, ImagenUrl = @imagenUrl, Precio = @precio where Id = @id");
+                datos.setParameter("@codigo", prod.Codigo);
+                datos.setParameter("@nombre", prod.Nombre);
+                datos.setParameter("@descripcion", prod.Descripcion);
+                datos.setParameter("@idMarca", prod.Marca.Id);
+                datos.setParameter("@idCategoria", prod.Categoria.Id);
+                datos.setParameter("@imagenUrl", prod.ImagenUrl);
+                datos.setParameter("@precio", prod.Precio);
+                datos.setParameter("Id", prod.Id);
+                datos.executeAction();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.closeConnection();
+            }
+        }
     }
 }
