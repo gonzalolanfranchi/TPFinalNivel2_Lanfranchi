@@ -34,6 +34,12 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
+            this.lblBuscar = new System.Windows.Forms.Label();
+            this.lblCampo = new System.Windows.Forms.Label();
+            this.cboCampo = new System.Windows.Forms.ComboBox();
+            this.cboCriterio = new System.Windows.Forms.ComboBox();
+            this.lblCriterio = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
             this.SuspendLayout();
@@ -45,7 +51,7 @@
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.Location = new System.Drawing.Point(274, 12);
             this.dgvArticulos.Name = "dgvArticulos";
-            this.dgvArticulos.Size = new System.Drawing.Size(644, 354);
+            this.dgvArticulos.Size = new System.Drawing.Size(644, 410);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
@@ -99,11 +105,67 @@
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
+            // txtFiltro
+            // 
+            this.txtFiltro.Location = new System.Drawing.Point(12, 346);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(249, 20);
+            this.txtFiltro.TabIndex = 6;
+            // 
+            // lblBuscar
+            // 
+            this.lblBuscar.AutoSize = true;
+            this.lblBuscar.Location = new System.Drawing.Point(13, 327);
+            this.lblBuscar.Name = "lblBuscar";
+            this.lblBuscar.Size = new System.Drawing.Size(43, 13);
+            this.lblBuscar.TabIndex = 7;
+            this.lblBuscar.Text = "Buscar:";
+            // 
+            // lblCampo
+            // 
+            this.lblCampo.AutoSize = true;
+            this.lblCampo.Location = new System.Drawing.Point(11, 377);
+            this.lblCampo.Name = "lblCampo";
+            this.lblCampo.Size = new System.Drawing.Size(43, 13);
+            this.lblCampo.TabIndex = 8;
+            this.lblCampo.Text = "Campo:";
+            // 
+            // cboCampo
+            // 
+            this.cboCampo.FormattingEnabled = true;
+            this.cboCampo.Location = new System.Drawing.Point(61, 374);
+            this.cboCampo.Name = "cboCampo";
+            this.cboCampo.Size = new System.Drawing.Size(121, 21);
+            this.cboCampo.TabIndex = 9;
+            // 
+            // cboCriterio
+            // 
+            this.cboCriterio.FormattingEnabled = true;
+            this.cboCriterio.Location = new System.Drawing.Point(61, 401);
+            this.cboCriterio.Name = "cboCriterio";
+            this.cboCriterio.Size = new System.Drawing.Size(121, 21);
+            this.cboCriterio.TabIndex = 10;
+            // 
+            // lblCriterio
+            // 
+            this.lblCriterio.AutoSize = true;
+            this.lblCriterio.Location = new System.Drawing.Point(11, 405);
+            this.lblCriterio.Name = "lblCriterio";
+            this.lblCriterio.Size = new System.Drawing.Size(42, 13);
+            this.lblCriterio.TabIndex = 11;
+            this.lblCriterio.Text = "Criterio:";
+            // 
             // frmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(930, 450);
+            this.Controls.Add(this.lblCriterio);
+            this.Controls.Add(this.cboCriterio);
+            this.Controls.Add(this.cboCampo);
+            this.Controls.Add(this.lblCampo);
+            this.Controls.Add(this.lblBuscar);
+            this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
@@ -118,6 +180,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -129,6 +192,12 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.TextBox txtFiltro;
+        private System.Windows.Forms.Label lblBuscar;
+        private System.Windows.Forms.Label lblCampo;
+        private System.Windows.Forms.ComboBox cboCampo;
+        private System.Windows.Forms.ComboBox cboCriterio;
+        private System.Windows.Forms.Label lblCriterio;
     }
 }
 
