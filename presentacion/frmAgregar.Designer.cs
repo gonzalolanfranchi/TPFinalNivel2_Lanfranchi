@@ -54,6 +54,7 @@
             this.pbxImagen.Location = new System.Drawing.Point(12, 12);
             this.pbxImagen.Name = "pbxImagen";
             this.pbxImagen.Size = new System.Drawing.Size(250, 250);
+            this.pbxImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxImagen.TabIndex = 0;
             this.pbxImagen.TabStop = false;
             // 

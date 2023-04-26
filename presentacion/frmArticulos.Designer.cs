@@ -55,7 +55,7 @@
             this.pbxImagen.Location = new System.Drawing.Point(12, 12);
             this.pbxImagen.Name = "pbxImagen";
             this.pbxImagen.Size = new System.Drawing.Size(250, 250);
-            this.pbxImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxImagen.TabIndex = 1;
             this.pbxImagen.TabStop = false;
             // 
@@ -67,6 +67,7 @@
             this.btnDetalle.TabIndex = 2;
             this.btnDetalle.Text = "Ver Detalle";
             this.btnDetalle.UseVisualStyleBackColor = true;
+            this.btnDetalle.Click += new System.EventHandler(this.btnDetalle_Click);
             // 
             // btnAgregar
             // 

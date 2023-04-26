@@ -23,11 +23,29 @@ namespace presentacion
             InitializeComponent();
         }
 
-        public frmAgregar(Producto producto)
+        public frmAgregar(Producto producto, bool modificable)
         {
             InitializeComponent();
             this.producto = producto;
-            Text = "Modificar producto";
+            if (modificable)
+            {
+                Text = "Modificar producto";
+                loadImage(producto.ImagenUrl);
+            }
+            else
+            {
+                Text = "Detalle del articulo";
+                loadImage(producto.ImagenUrl);
+                txtCodigo.Enabled = false;
+                txtNombre.Enabled = false;
+                txtDescripcion.Enabled = false;
+                cboMarca.Enabled = false;
+                cboCategoria.Enabled = false;
+                txtImagenUrl.Enabled = false;
+                txtPrecio.Enabled = false;
+                btnAceptar.Visible = false;
+                btnAgregarImagen.Visible = false;
+            }
         }
 
         private void frmAgregar_Load(object sender, EventArgs e)

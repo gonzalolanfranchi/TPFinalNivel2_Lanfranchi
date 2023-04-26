@@ -107,9 +107,19 @@ namespace presentacion
         {
             Producto seleccionado;
             seleccionado = (Producto)dgvArticulos.CurrentRow.DataBoundItem;
-            frmAgregar modificar = new frmAgregar(seleccionado);
+            frmAgregar modificar = new frmAgregar(seleccionado, true);
             modificar.ShowDialog();
             load();
+        }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            Producto seleccionado;
+            seleccionado = (Producto)dgvArticulos.CurrentRow.DataBoundItem;
+            frmAgregar detalles = new frmAgregar(seleccionado, false);
+            detalles.ShowDialog();
+            load();
+
         }
     }
 }
