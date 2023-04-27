@@ -116,7 +116,7 @@ namespace presentacion
         {
             Producto seleccionado;
             seleccionado = (Producto)dgvArticulos.CurrentRow.DataBoundItem;
-            frmAgregar detalles = new frmAgregar(seleccionado, false);
+            frmAgregar detalles = new frmAgregar(seleccionado);
             detalles.ShowDialog();
             load();
 

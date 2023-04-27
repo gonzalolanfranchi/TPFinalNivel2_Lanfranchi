@@ -23,7 +23,7 @@ namespace presentacion
             InitializeComponent();
         }
 
-        public frmAgregar(Producto producto, bool modificable)
+        public frmAgregar(Producto producto, bool modificable = false)
         {
             InitializeComponent();
             this.producto = producto;
@@ -36,15 +36,16 @@ namespace presentacion
             {
                 Text = "Detalle del articulo";
                 loadImage(producto.ImagenUrl);
-                txtCodigo.Enabled = false;
-                txtNombre.Enabled = false;
-                txtDescripcion.Enabled = false;
-                cboMarca.Enabled = false;
-                cboCategoria.Enabled = false;
-                txtImagenUrl.Enabled = false;
-                txtPrecio.Enabled = false;
+                txtCodigo.ReadOnly = true;
+                txtNombre.ReadOnly = true;
+                txtDescripcion.ReadOnly = true;
+                //cboMarca.Enabled = false;
+                //cboCategoria.Enabled = false;
+                txtImagenUrl.ReadOnly = true;
+                txtPrecio.ReadOnly = true;
                 btnAceptar.Visible = false;
                 btnAgregarImagen.Visible = false;
+                btnCancelar.Text = "Cerrar";
             }
         }
 
