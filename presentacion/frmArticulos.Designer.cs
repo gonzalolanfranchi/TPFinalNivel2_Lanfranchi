@@ -40,6 +40,8 @@
             this.cboCampo = new System.Windows.Forms.ComboBox();
             this.cboCriterio = new System.Windows.Forms.ComboBox();
             this.lblCriterio = new System.Windows.Forms.Label();
+            this.btnResetear = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
             this.SuspendLayout();
@@ -111,6 +113,7 @@
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(249, 20);
             this.txtFiltro.TabIndex = 6;
+            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
             // 
             // lblBuscar
             // 
@@ -137,6 +140,7 @@
             this.cboCampo.Name = "cboCampo";
             this.cboCampo.Size = new System.Drawing.Size(121, 21);
             this.cboCampo.TabIndex = 9;
+            this.cboCampo.SelectedIndexChanged += new System.EventHandler(this.cboCampo_SelectedIndexChanged);
             // 
             // cboCriterio
             // 
@@ -155,11 +159,33 @@
             this.lblCriterio.TabIndex = 11;
             this.lblCriterio.Text = "Criterio:";
             // 
+            // btnResetear
+            // 
+            this.btnResetear.Location = new System.Drawing.Point(186, 373);
+            this.btnResetear.Name = "btnResetear";
+            this.btnResetear.Size = new System.Drawing.Size(75, 23);
+            this.btnResetear.TabIndex = 12;
+            this.btnResetear.Text = "Resetear";
+            this.btnResetear.UseVisualStyleBackColor = true;
+            this.btnResetear.Click += new System.EventHandler(this.btnResetear_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(186, 400);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 13;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // frmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(930, 450);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.btnResetear);
             this.Controls.Add(this.lblCriterio);
             this.Controls.Add(this.cboCriterio);
             this.Controls.Add(this.cboCampo);
@@ -198,6 +224,8 @@
         private System.Windows.Forms.ComboBox cboCampo;
         private System.Windows.Forms.ComboBox cboCriterio;
         private System.Windows.Forms.Label lblCriterio;
+        private System.Windows.Forms.Button btnResetear;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }
 
