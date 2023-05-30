@@ -31,6 +31,7 @@ namespace presentacion
             cboCampo.Items.Add("Categoria");
             cboCampo.Items.Add("Precio");
             cboCampo.SelectedItem = "Nombre";
+
         }
 
         private void load()
@@ -42,6 +43,7 @@ namespace presentacion
                 dgvArticulos.DataSource = listaProducto;
                 hideColumns();
                 loadImage(listaProducto[0].ImagenUrl);
+                dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "0.00";
             }
             catch (Exception ex)
             {
@@ -143,6 +145,7 @@ namespace presentacion
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = filteredList;
             hideColumns();
+            dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "0.00";
         }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
@@ -202,10 +205,18 @@ namespace presentacion
                 MessageBox.Show("Por favor, seleccione el criterio para filtrar");
                 return true;
             }
-            if (cboCampo.SelectedItem.ToString() == "Precio" && txtFiltro.Text == "")
+            if (cboCampo.SelectedItem.ToString() == "Precio")
             {
-                MessageBox.Show("Por favor, ingrese un numero para filtrar");
-                return true;
+                if (txtFiltro.Text == "")
+                {
+                    MessageBox.Show("Por favor, ingrese un numero para filtrar");
+                    return true;
+                }
+                if (!(onlyNumbers(txtFiltro.Text)))
+                {
+                    MessageBox.Show("Solo numeros para filtrar por precio!");
+                    return true;
+                }
             }
 
             
@@ -213,11 +224,23 @@ namespace presentacion
             return false;
         }
 
+        private bool onlyNumbers(string chain)
+        {
+            foreach (char character in chain)
+            {
+                if (!(char.IsNumber(character)))
+                    return false;
+            }
+            return true;
+        }
+
         private void btnResetear_Click(object sender, EventArgs e)
         {
             filtrar("");
             txtFiltro.Text = "";
-
+            cboCampo.SelectedItem = "Nombre";
         }
+
+        
     }
 }

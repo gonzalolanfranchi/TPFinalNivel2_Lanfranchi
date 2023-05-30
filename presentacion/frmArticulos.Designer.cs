@@ -51,8 +51,10 @@
             this.dgvArticulos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvArticulos.Location = new System.Drawing.Point(274, 12);
             this.dgvArticulos.Name = "dgvArticulos";
+            this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(644, 410);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
@@ -109,7 +111,7 @@
             // 
             // txtFiltro
             // 
-            this.txtFiltro.Location = new System.Drawing.Point(12, 346);
+            this.txtFiltro.Location = new System.Drawing.Point(12, 358);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(249, 20);
             this.txtFiltro.TabIndex = 6;
@@ -118,7 +120,7 @@
             // lblBuscar
             // 
             this.lblBuscar.AutoSize = true;
-            this.lblBuscar.Location = new System.Drawing.Point(13, 327);
+            this.lblBuscar.Location = new System.Drawing.Point(13, 339);
             this.lblBuscar.Name = "lblBuscar";
             this.lblBuscar.Size = new System.Drawing.Size(43, 13);
             this.lblBuscar.TabIndex = 7;
@@ -127,7 +129,7 @@
             // lblCampo
             // 
             this.lblCampo.AutoSize = true;
-            this.lblCampo.Location = new System.Drawing.Point(11, 377);
+            this.lblCampo.Location = new System.Drawing.Point(11, 416);
             this.lblCampo.Name = "lblCampo";
             this.lblCampo.Size = new System.Drawing.Size(43, 13);
             this.lblCampo.TabIndex = 8;
@@ -136,7 +138,7 @@
             // cboCampo
             // 
             this.cboCampo.FormattingEnabled = true;
-            this.cboCampo.Location = new System.Drawing.Point(61, 374);
+            this.cboCampo.Location = new System.Drawing.Point(61, 413);
             this.cboCampo.Name = "cboCampo";
             this.cboCampo.Size = new System.Drawing.Size(121, 21);
             this.cboCampo.TabIndex = 9;
@@ -145,7 +147,7 @@
             // cboCriterio
             // 
             this.cboCriterio.FormattingEnabled = true;
-            this.cboCriterio.Location = new System.Drawing.Point(61, 401);
+            this.cboCriterio.Location = new System.Drawing.Point(61, 440);
             this.cboCriterio.Name = "cboCriterio";
             this.cboCriterio.Size = new System.Drawing.Size(121, 21);
             this.cboCriterio.TabIndex = 10;
@@ -153,7 +155,7 @@
             // lblCriterio
             // 
             this.lblCriterio.AutoSize = true;
-            this.lblCriterio.Location = new System.Drawing.Point(11, 405);
+            this.lblCriterio.Location = new System.Drawing.Point(11, 444);
             this.lblCriterio.Name = "lblCriterio";
             this.lblCriterio.Size = new System.Drawing.Size(42, 13);
             this.lblCriterio.TabIndex = 11;
@@ -161,7 +163,7 @@
             // 
             // btnResetear
             // 
-            this.btnResetear.Location = new System.Drawing.Point(186, 373);
+            this.btnResetear.Location = new System.Drawing.Point(187, 335);
             this.btnResetear.Name = "btnResetear";
             this.btnResetear.Size = new System.Drawing.Size(75, 23);
             this.btnResetear.TabIndex = 12;
@@ -171,11 +173,11 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(186, 400);
+            this.btnBuscar.Location = new System.Drawing.Point(186, 418);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(75, 38);
             this.btnBuscar.TabIndex = 13;
-            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.Text = "Busqueda Avanzada";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -183,7 +185,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(930, 450);
+            this.ClientSize = new System.Drawing.Size(930, 481);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnResetear);
             this.Controls.Add(this.lblCriterio);
@@ -198,7 +200,7 @@
             this.Controls.Add(this.btnDetalle);
             this.Controls.Add(this.pbxImagen);
             this.Controls.Add(this.dgvArticulos);
-            this.MinimumSize = new System.Drawing.Size(913, 489);
+            this.MinimumSize = new System.Drawing.Size(946, 520);
             this.Name = "frmArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrador de Articulos";
