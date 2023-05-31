@@ -59,8 +59,18 @@ namespace presentacion
             }
             catch (Exception)
             {
-                string sinimagen = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName + ConfigurationManager.AppSettings["images"] + "\\notfound.png";
-                pbxImagen.Load(sinimagen);
+                try
+                {
+                    string sinimagen = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName + ConfigurationManager.AppSettings["images"] + "\\notfound.png";
+                    pbxImagen.Load(sinimagen);
+
+                }
+                catch (Exception ex)
+                {
+                    string sinimagen = "https://cdn.icon-icons.com/icons2/1462/PNG/512/120nophoto_100007.png";
+                    pbxImagen.Load(sinimagen);
+                    throw ex;
+                }
             }
         }
 

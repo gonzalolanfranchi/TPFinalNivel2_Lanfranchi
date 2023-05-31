@@ -108,7 +108,7 @@ namespace presentacion
                     producto.Precio = decimal.Parse(txtPrecio.Text);
 
                     if (archivo != null && !(txtImagenUrl.Text.ToUpper().Contains("HTTP")))
-                    {
+                    {                        
                         File.Copy(archivo.FileName, Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName + ConfigurationManager.AppSettings["images"] + archivo.SafeFileName);
                         producto.ImagenUrl = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName + ConfigurationManager.AppSettings["images"] + archivo.SafeFileName;
                     }
@@ -123,7 +123,6 @@ namespace presentacion
                         MessageBox.Show("Agregado exitosamente!");
                     }
                     Close();
-
                 }
                 return;
             }
@@ -135,6 +134,7 @@ namespace presentacion
 
         private bool validateProduct()
         {
+            //Validaciones a la hora de agregar o modificar productos
             if (txtNombre.Text == null || txtNombre.Text == "")
             {
                 MessageBox.Show("El producto debe tener un nombre.");
@@ -170,12 +170,13 @@ namespace presentacion
                 MessageBox.Show("La URL de la imagen es demasiado larga. Maximo 1000 caracteres.");
                 return false;
             }
-
             return true;
         }
 
-        private bool correctPriceFormat(string chain) //NO ME SALIO ESTO TODAVIA, REHACER
+        private bool correctPriceFormat(string chain) 
         {
+            //Esta validacion es para que cambie el . por la , y se carguen correctamente los precios.
+            //Tambien detecta si pusieron mas de un punto y/o coma
             chain = chain.Replace('.' , ',');
             int commaCounter = 0;
 
@@ -191,7 +192,6 @@ namespace presentacion
                 {
                     return true;
                 }
-
             }   
             if (commaCounter == 0 || commaCounter == 1)
             {
@@ -223,8 +223,28 @@ namespace presentacion
             }
             catch (Exception)
             {
-                string sinimagen = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName + ConfigurationManager.AppSettings["images"] + "\\notfound.png";
-                pbxImagen.Load(sinimagen);
+                //La idea de lo siguiente es que encuentre la carpeta de la imagen
+                //sea donde sea que este puesto el programa, para que sea mas rapida la carga
+                //Y si falla que la busque de internet
+                try
+                {
+                    string sinimagen = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName + ConfigurationManager.AppSettings["images"] + "\\notfound.png";
+                    pbxImagen.Load(sinimagen);
+
+                }
+                catch (Exception)
+                {
+                    try
+                    {
+                        string sinimagen = "https://cdn.icon-icons.com/icons2/1462/PNG/512/120nophoto_100007.png";
+                        pbxImagen.Load(sinimagen);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
             }
         }
     }
