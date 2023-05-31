@@ -200,6 +200,7 @@
             this.Controls.Add(this.btnDetalle);
             this.Controls.Add(this.pbxImagen);
             this.Controls.Add(this.dgvArticulos);
+            this.MaximumSize = new System.Drawing.Size(946, 520);
             this.MinimumSize = new System.Drawing.Size(946, 520);
             this.Name = "frmArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
